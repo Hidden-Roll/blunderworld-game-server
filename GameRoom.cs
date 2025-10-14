@@ -45,7 +45,7 @@ public class GameRoom : ServerService
 
         await Task.Delay(5000);
 
-        for (int i = 0; i < 22; i++)
+        for (int i = 0; i < 14; i++)
         {
             users.ForEach(u => u.ReadyUp = false);
             while (!users.All(u => u.ReadyUp))
@@ -61,13 +61,13 @@ public class GameRoom : ServerService
             {
                 if (userDebuffs.ContainsKey(user))
                 {
-                    Console.WriteLine(user.Username + " sending debuff to room: " + userDebuffs[user]);
                     // Apply debuffs to every other user
                     SendToRoom(PacketBuilder.SubmitDebuff(userDebuffs[user]), DeliveryMethod.ReliableUnordered, user);
                 }
             }
 
             await Task.Delay(2000);
+            userDebuffs.Clear();
 
             // NEXT ROUND
             SendToRoom(PacketBuilder.NextRound(), DeliveryMethod.ReliableUnordered);
@@ -78,15 +78,13 @@ public class GameRoom : ServerService
             roundStarting = false;
         }
 
-        Console.WriteLine("Waiting for final rounds to end...");
-
         while (!users.All(u => u.ReadyUp))
         {
             await Task.Delay(1000);
         }
 
-        Console.WriteLine("Determining winner...");
         List<User> placement = users.OrderBy(u => u.Score).ToList();
+        placement.Reverse();
         SendToRoom(PacketBuilder.SendPlacement(placement.Select(u => u.GUID).ToArray(), placement.Select(u => u.Score).ToArray()), DeliveryMethod.ReliableUnordered);
 
         await Task.Delay(15000);

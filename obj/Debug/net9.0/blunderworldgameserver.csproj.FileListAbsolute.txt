@@ -12,3 +12,4 @@ D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\refint\blunderwor
 D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\blunderworldgameserver.pdb
 D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\blunderworldgameserver.genruntimeconfig.cache
 D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\ref\blunderworldgameserver.dll
+D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\blunderworldgameserver.sourcelink.json
