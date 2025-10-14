@@ -58,8 +58,14 @@ public class GameRoomModule : ServerModule
             {
                 string lobbyID = packet.ReadString();
                 GameRoom g = gameRooms[int.Parse(lobbyID)];
-                g.AddUser(user);
-                Console.WriteLine("User " + user.PlayerID + " joined lobby " + lobbyID);
+                if(g.GetUsers().Count < 4)
+                {
+                    g.AddUser(user);
+                    Console.WriteLine("User " + user.PlayerID + " joined lobby " + lobbyID);
+                } else
+                {
+                    Console.WriteLine("User " + user.PlayerID + " could not join the full lobby " + lobbyID);
+                }
                 break;
             }
 
