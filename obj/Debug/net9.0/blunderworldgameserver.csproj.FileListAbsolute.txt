@@ -1,0 +1,14 @@
+D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\blunderworldgameserver.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\blunderworldgameserver.AssemblyInfoInputs.cache
+D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\blunderworldgameserver.AssemblyInfo.cs
+D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\blunderworldgameserver.csproj.CoreCompileInputs.cache
+D:\Projects\HiddenRoll\blunderworldgameserver\bin\Debug\net9.0\blunderworldgameserver.exe
+D:\Projects\HiddenRoll\blunderworldgameserver\bin\Debug\net9.0\blunderworldgameserver.deps.json
+D:\Projects\HiddenRoll\blunderworldgameserver\bin\Debug\net9.0\blunderworldgameserver.runtimeconfig.json
+D:\Projects\HiddenRoll\blunderworldgameserver\bin\Debug\net9.0\blunderworldgameserver.dll
+D:\Projects\HiddenRoll\blunderworldgameserver\bin\Debug\net9.0\blunderworldgameserver.pdb
+D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\blunderworldgameserver.dll
+D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\refint\blunderworldgameserver.dll
+D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\blunderworldgameserver.pdb
+D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\blunderworldgameserver.genruntimeconfig.cache
+D:\Projects\HiddenRoll\blunderworldgameserver\obj\Debug\net9.0\ref\blunderworldgameserver.dll

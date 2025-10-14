@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "blunderworldgameserver/1.0.0": {
+        "runtime": {
+          "blunderworldgameserver.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "blunderworldgameserver/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
