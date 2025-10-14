@@ -17,8 +17,8 @@ public enum CommandType
 {
     /* MAIN */ EXIT,
     /* GAMEROOM */ CREATE_LOBBY, LOBBY_INVITE, REQUEST_INVITE, ACCEPT_INVITE, LOBBY_KICK, START_GAME, READY_UP,
-    /* LOBBY */ PLAYER_LIST, READY_STATE, LOAD_GAME, CHECK_IN_STATES, CONFIRM_CONNECTION, CONFIRM_INVITE, NEXT_ROUND, SUBMIT_DEBUFF, SUBMIT_SCORE, SEND_PLACEMENT, END_GAME,
-    /* GAME */ PLAYER_SCORE,
+    /* LOBBY */ PLAYER_LIST, READY_STATE, LOAD_GAME, CHECK_IN_STATES, CONFIRM_CONNECTION, CONFIRM_INVITE, NEXT_ROUND, SUBMIT_DEBUFF, SUBMIT_SCORE, SEND_PLACEMENT, END_GAME, PLAYER_DISCONNECTED,
+    /* GAME */ PLAYER_SCORE, PLAYER_GOLD, PLAYER_MESSAGE, PLAYER_STREAM, PLAYER_EMOTE, PLAYER_PACTS,
 }
 
 public class PacketBuilder
@@ -206,7 +206,17 @@ public class PacketBuilder
         packet.Write((byte)CommandType.END_GAME);
         return packet;
     }
-    
+
+    public static NetPacket PlayerDisconnected(string guid)
+    {
+        NetPacket packet = new NetPacket();
+        packet.Write((byte)ModuleType.NONE);
+        packet.Write((byte)ServiceType.LOBBY);
+        packet.Write((byte)CommandType.PLAYER_DISCONNECTED);
+        packet.Write(guid);
+        return packet;
+    }
+
     /* GAME */
     public static NetPacket PlayerScore(string guid, string score)
     {
@@ -215,6 +225,56 @@ public class PacketBuilder
         packet.Write((byte)CommandType.PLAYER_SCORE);
         packet.Write(guid);
         packet.Write(score);
+        return packet;
+    }
+
+    public static NetPacket PlayerGold(string guid, int gold)
+    {
+        NetPacket packet = new NetPacket();
+        packet.Write((byte)ServiceType.GAME);
+        packet.Write((byte)CommandType.PLAYER_GOLD);
+        packet.Write(guid);
+        packet.Write(gold);
+        return packet;
+    }
+
+    public static NetPacket ChatMessage(string name, string message)
+    {
+        NetPacket packet = new NetPacket();
+        packet.Write((byte)ServiceType.GAME);
+        packet.Write((byte)CommandType.PLAYER_MESSAGE);
+        packet.Write(name);
+        packet.Write(message);
+        return packet;
+    }
+
+    public static NetPacket ChatEmote(string guid, string emote)
+    {
+        NetPacket packet = new NetPacket();
+        packet.Write((byte)ServiceType.GAME);
+        packet.Write((byte)CommandType.PLAYER_EMOTE);
+        packet.Write(guid);
+        packet.Write(emote);
+        return packet;
+    }
+
+    public static NetPacket PlayerStream(string guid, byte[] streamData)
+    {
+        NetPacket packet = new NetPacket();
+        packet.Write((byte)ServiceType.GAME);
+        packet.Write((byte)CommandType.PLAYER_STREAM);
+        packet.Write(guid);
+        packet.Write(streamData);
+        return packet;
+    }
+
+    public static NetPacket PlayerPacts(string guid, string[] pactIdentifiers)
+    {
+        NetPacket packet = new NetPacket();
+        packet.Write((byte)ServiceType.GAME);
+        packet.Write((byte)CommandType.PLAYER_PACTS);
+        packet.Write(guid);
+        packet.Write(pactIdentifiers);
         return packet;
     }
 

@@ -183,6 +183,8 @@ public class GameRoom : ServerService
         users.Remove(user);
         GameRoomModule.Instance.UndocumentUser(user);
 
+        SendToRoom(PacketBuilder.PlayerDisconnected(user.GUID), DeliveryMethod.ReliableUnordered);
+
         if (users.Count == 0)
         {
             GameRoomModule.Instance.CloseGameRoom(this);
