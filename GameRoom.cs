@@ -45,7 +45,7 @@ public class GameRoom : ServerService
 
         await Task.Delay(5000);
 
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 22; i++)
         {
             users.ForEach(u => u.ReadyUp = false);
             while (!users.All(u => u.ReadyUp))
