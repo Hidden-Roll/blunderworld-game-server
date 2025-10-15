@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("blunderworldgameserver")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca2386652a476c8b39995da491bd77d887aa9d71")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bc516c27e9d7f2ad5efd6d8a80e5a4faa771f3a")]
 [assembly: System.Reflection.AssemblyProductAttribute("blunderworldgameserver")]
 [assembly: System.Reflection.AssemblyTitleAttribute("blunderworldgameserver")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -57,15 +57,20 @@ public class GameRoomModule : ServerModule
             case CommandType.ACCEPT_INVITE:
             {
                 string lobbyID = packet.ReadString();
-                GameRoom g = gameRooms[int.Parse(lobbyID)];
-                if(g.GetUsers().Count < 4)
+                int ID = int.Parse(lobbyID);
+                if(gameRooms.ContainsKey(ID))
                 {
-                    g.AddUser(user);
-                    Console.WriteLine("User " + user.PlayerID + " joined lobby " + lobbyID);
-                } else
-                {
-                    Console.WriteLine("User " + user.PlayerID + " could not join the full lobby " + lobbyID);
+                    GameRoom g = gameRooms[int.Parse(lobbyID)];
+                    if(g.GetUsers().Count < 4)
+                    {
+                        g.AddUser(user);
+                        Console.WriteLine("User " + user.PlayerID + " joined lobby " + lobbyID);
+                    } else
+                    {
+                        Console.WriteLine("User " + user.PlayerID + " could not join the full lobby " + lobbyID);
+                    }
                 }
+                
                 break;
             }
 
@@ -79,29 +84,38 @@ public class GameRoomModule : ServerModule
 
             case CommandType.START_GAME:
             {
-                GameRoom g = userRooms[user];
-                g.StartGame();
+                if(userRooms.TryGetValue(user, out GameRoom? g))
+                {
+                    g.StartGame();
+                }    
                 break;
             }
         
             case CommandType.READY_UP:
             {
-                GameRoom g = userRooms[user];
-                g.ReadyUpUser(user);
+                if(userRooms.TryGetValue(user, out GameRoom? g))
+                {
+                    g.ReadyUpUser(user);
+                }
+                
                 break;
             }
             
             case CommandType.SUBMIT_DEBUFF:
             {
-                GameRoom g = userRooms[user];
-                g.SubmitDebuff(user, packet.ReadByte());
+                if(userRooms.TryGetValue(user, out GameRoom? g))
+                {
+                    g.SubmitDebuff(user, packet.ReadByte());
+                }
                 break;
             }
             
             case CommandType.SUBMIT_SCORE:
             {
-                GameRoom g = userRooms[user];
-                g.SubmitScore(user, packet.ReadLong());
+                if(userRooms.TryGetValue(user, out GameRoom? g))
+                {
+                    g.SubmitScore(user, packet.ReadLong());
+                }
                 break;
             }
 
